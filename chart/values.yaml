@@ -1,0 +1,91 @@
+# ↓ jenkins动态修改部分,不用修改，不可删除
+global:
+  repository: harbor.devops.com/prod/
+  imagePullSecretName: xxxxx
+  namespace: "ewellprod"
+  appGroup: "ops"
+  domain1: "ewell.cc"
+  replicaCount: 1
+domain2: xxxxx
+jaegerName: "web-dev.ewell.cc"
+imageTag: "20190329_092618"
+pullPolicy: IfNotPresent
+# ↑ jenkins动态修改部分,不用修改，不可删除
+
+# k8s中service服务中的各项配置，从原manifests的service中提取下述字段
+service:
+  ports:
+  - name: dubbo
+    port: 20880
+  - name: swagger
+    port: 8080
+
+# k8s中ingress中的各项配置，从原manifests的ingress中提取下述字段
+ingress:
+  # 是否启用ingress配置域名访问 -- 一般前端项目启用
+  enabled: true
+  servicePort: 8080
+  path: /
+
+deploy: 
+  # 环境变量，前后端微服务自动添加"JAEGERNAME"  
+  env:
+  - name: ENV
+    value: dev
+  # 硬件资源
+  resources:
+    limits:
+      cpu: 2
+      memory: 2Gi
+    requests:
+      cpu: 1
+      memory: 1Gi
+  # 容器端口
+  ports:
+    - name: dubbo
+      containerPort: 20880
+      protocol: TCP
+    - name: swagger
+      containerPort: 8080
+      protocol: TCP
+  # 健康检查
+  readinessProbe: 
+    failureThreshold: 5
+    httpGet:
+      path: /actuator/health
+      port: 8080
+      scheme: HTTP
+    initialDelaySeconds: 60
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
+  livenessProbe:
+    failureThreshold: 5
+    tcpSocket:
+      port: 8080
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
+  # 容器内挂载目录
+  volumeMounts:
+    - name: logs
+      mountPath: /var/log/ewell
+  # 外部持久卷
+  volumes:
+  # 名为'app-config'的configmap, 在下文的'configmaps.enabled=true'时，自动挂载
+#  - name: app-config
+#    configMap:
+#      defaultMode: 420
+#      name: operation-ops-ewell
+    # 日志目录自动挂载，各业务组需要在 volumeMounts 中指定挂载目的地
+
+# 外部持久卷 -- 共享存储
+persistence:
+  enabled: false
+# 配置文件内容 -- configmap, 可下附多个配置文件
+configmaps:
+  enabled: false
+# secret等密钥
+ssl:
+  enabled: false

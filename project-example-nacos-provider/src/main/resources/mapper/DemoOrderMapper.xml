@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.ewell.example.mapper.DemoOrderMapper">
+  <resultMap id="BaseResultMap" type="cc.ewell.example.mapper.domain.DemoOrderDomain">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ORDER_ID" jdbcType="VARCHAR" property="orderId" />
+    <result column="ORDER_CODE" jdbcType="VARCHAR" property="orderCode" />
+    <result column="ORDER_NAME" jdbcType="VARCHAR" property="orderName" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="OPERATOR_CODE" jdbcType="VARCHAR" property="operatorCode" />
+  </resultMap>
+</mapper>

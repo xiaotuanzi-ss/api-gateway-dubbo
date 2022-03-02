@@ -1,0 +1,28 @@
+{{- if .Values.persistence.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "project.name" . }}
+  labels:
+    app: {{ include "project.name" . }}
+    appGroup: {{ .Values.global.appGroup }}
+    chart: {{ include "project.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  {{- if not .Values.persistence.storageClass }}
+  selector:
+    matchLabels:
+      app: {{ include "project.name" . }}
+      appGroup: {{ .Values.global.appGroup }}
+      release: {{ .Release.Name }}
+  {{- end }}
+  accessModes:
+  - {{ .Values.persistence.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.size | quote }}
+{{- if .Values.persistence.storageClass }}
+  storageClassName: "{{ .Values.persistence.storageClass }}"
+{{- end }}
+{{- end }}

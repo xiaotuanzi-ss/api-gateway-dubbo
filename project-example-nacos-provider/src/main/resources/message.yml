@@ -1,0 +1,17 @@
+root:
+  international:
+    - timezone: zh
+      defaultzone: true
+      messagescode:
+        - code: SYSEX0133
+          state: false
+          context: 内部异常
+        - code: SYSEX0134
+          state: true
+          context: 处理成功
+        - code: SYSEX0135
+          state: false
+          context: 传入实体类参数不能为空
+        - code: SYSEX0136
+          state: false
+          context: 操作失败

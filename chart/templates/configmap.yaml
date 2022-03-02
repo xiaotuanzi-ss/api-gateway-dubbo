@@ -1,0 +1,17 @@
+{{- if .Values.configmaps.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "project.name" . }}
+  labels:
+    app: {{ include "project.name" . }}
+    appGroup: {{ .Values.global.appGroup }}
+    chart: {{ include "project.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+{{- range $key, $val := .Values.configmaps.datas }}
+  {{ $key }}: |-
+{{ $val | indent 4}}
+{{- end }}
+{{- end -}}

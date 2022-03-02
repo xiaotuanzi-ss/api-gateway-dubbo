@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "project.name" . }}
+  labels:
+    app: {{ include "project.name" . }}
+    appGroup: {{ .Values.global.appGroup }}
+    chart: {{ include "project.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: NodePort
+{{- if .Values.service.sessionAffinity }}
+{{- if contains "ClientIP" .Values.service.sessionAffinity }}
+  sessionAffinity: {{ .Values.service.sessionAffinity }}
+  sessionAffinityConfig:
+{{ toYaml .Values.service.sessionAffinityConfig | indent 4 }}
+{{- end }}
+{{- end }}
+  ports:
+{{ toYaml .Values.service.ports | indent 2 }}
+  selector:
+    app: {{ include "project.name" . }}
+    appGroup: {{ .Values.global.appGroup }}
+    release: {{ .Release.Name }}

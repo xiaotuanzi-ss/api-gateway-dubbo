@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="Oracle" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@//192.168.150.199:1521/dbsrv2pdb" userId="infra"
+                        password="infra">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="cc.ewell.example.mapper.domain" targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="cc.ewell.example.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+        <table tableName="DEMO_ORDER" domainObjectName="DemoOrderDomain" mapperName="DemoOrderMapper">
+            <property name="useActualColumnNames" value="fasle" />
+            <columnOverride column="ORDER_ID" javaType="java.lang.String" />
+        </table>
+        <table tableName="DEMO_ORDER_DETAIL" domainObjectName="DemoOrderDetailDomain" mapperName="DemoOrderDetailMapper">
+            <property name="useActualColumnNames" value="fasle" />
+            <columnOverride column="ITEM_ID" javaType="java.lang.String" />
+        </table>
+    </context>
+</generatorConfiguration>
