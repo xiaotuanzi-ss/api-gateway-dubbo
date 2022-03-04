@@ -39,27 +39,27 @@ hs_err_pid*
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+../api-gateway-dubbo/.idea/**/workspace.xml
+../api-gateway-dubbo/.idea/**/tasks.xml
+../api-gateway-dubbo/.idea/**/usage.statistics.xml
+../api-gateway-dubbo/.idea/**/dictionaries
+../api-gateway-dubbo/.idea/**/shelf
 
 # Generated files
-.idea/**/contentModel.xml
+../api-gateway-dubbo/.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+../api-gateway-dubbo/.idea/**/dataSources/
+../api-gateway-dubbo/.idea/**/dataSources.ids
+../api-gateway-dubbo/.idea/**/dataSources.local.xml
+../api-gateway-dubbo/.idea/**/sqlDataSources.xml
+../api-gateway-dubbo/.idea/**/dynamic.xml
+../api-gateway-dubbo/.idea/**/uiDesigner.xml
+../api-gateway-dubbo/.idea/**/dbnavigator.xml
 
 # Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+../api-gateway-dubbo/.idea/**/gradle.xml
+../api-gateway-dubbo/.idea/**/libraries
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -78,7 +78,7 @@ hs_err_pid*
 cmake-build-*/
 
 # Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+../api-gateway-dubbo/.idea/**/mongoSettings.xml
 
 # File-based project format
 *.iws
@@ -93,7 +93,7 @@ out/
 atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
-.idea/replstate.xml
+../api-gateway-dubbo/.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
@@ -102,7 +102,9 @@ crashlytics-build.properties
 fabric.properties
 
 # Editor-based Rest Client
-.idea/httpRequests
+../api-gateway-dubbo/.idea/httpRequests
 
 # Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
+../api-gateway-dubbo/.idea/caches/build_file_checksums.ser
+/project-example-nacos-api/project-example-nacos-api.iml
+/project-example-nacos-provider/project-example-nacos-provider.iml

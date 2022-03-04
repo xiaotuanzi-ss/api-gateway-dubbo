@@ -1,26 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-    <artifactId>project-example-nacos</artifactId>
-    <groupId>cc.ewell.infra</groupId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<modules>
-	   		<module>project-example-nacos-api</module>
-       		<module>project-example-nacos-provider</module>
-       	</modules>
-	<!-- 指定Spring Boot版本为2.1.1.RELEASE -->
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>api-gateway-dubbo</artifactId>
+    <groupId>cc.ewell</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>api-gateway-dubbo-api</module>
+        <module>api-gateway-dubbo-provider</module>
+    </modules>
+    <!-- 指定Spring Boot版本为2.1.1.RELEASE -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.12.RELEASE</version>
     </parent>
-	
-	<properties>
-		<elasticsearch.version>7.2.0</elasticsearch.version>
-<!-- 		<tomcat.version>9.0.31</tomcat.version>-->
-	</properties>
+
+    <properties>
+        <!--		<elasticsearch.version>7.2.0</elasticsearch.version>-->
+        <!-- 		<tomcat.version>9.0.31</tomcat.version>-->
+
+        <revision>0.4.0</revision>
+        <main.basedir>${project.basedir}</main.basedir>
+        <commons-lang3-version>3.7</commons-lang3-version>
+        <dubbo-version>3.0.2.1</dubbo-version>
+        <fastjson-version>1.2.67</fastjson-version>
+        <springfox-swagger-version>2.9.2</springfox-swagger-version>
+        <jacoco-version>0.8.2</jacoco-version>
+        <apollo-version>1.2.0</apollo-version>
+        <guava-version>20.0</guava-version>
+        <dubbo-mock-version>3.0.0</dubbo-mock-version>
+        <mybatis-plus-boot-version>3.4.2</mybatis-plus-boot-version>
+
+        <maven-checkstyle-plugin-version>3.0.0</maven-checkstyle-plugin-version>
+        <spring-boot-version>2.3.12.RELEASE</spring-boot-version>
+        <maven_compiler_version>3.6.0</maven_compiler_version>
+        <maven-flatten-version>1.1.0</maven-flatten-version>
+
+        <java_source_version>1.8</java_source_version>
+        <java_target_version>1.8</java_target_version>
+        <file_encoding>UTF-8</file_encoding>
+        <checkstyle.skip>true</checkstyle.skip>
+        <rat.skip>true</rat.skip>
+    </properties>
 
 </project>

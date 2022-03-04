@@ -1,0 +1,2 @@
+zookeeper=cc.ewell.dubbo.admin.registry.mapping.impl.ZookeeperServiceMapping
+nacos=cc.ewell.dubbo.admin.registry.mapping.impl.NacosServiceMapping

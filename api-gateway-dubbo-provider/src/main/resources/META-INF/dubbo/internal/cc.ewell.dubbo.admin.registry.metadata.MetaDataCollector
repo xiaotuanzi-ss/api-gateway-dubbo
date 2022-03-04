@@ -1,0 +1,4 @@
+zookeeper=cc.ewell.dubbo.admin.registry.metadata.impl.ZookeeperMetaDataCollector
+redis=cc.ewell.dubbo.admin.registry.metadata.impl.RedisMetaDataCollector
+consul=cc.ewell.dubbo.admin.registry.metadata.impl.ConsulMetaDataCollector
+nacos=cc.ewell.dubbo.admin.registry.metadata.impl.NacosMetaDataCollector
