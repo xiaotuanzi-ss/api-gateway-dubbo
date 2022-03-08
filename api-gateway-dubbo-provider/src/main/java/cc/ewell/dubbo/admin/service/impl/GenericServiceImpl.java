@@ -46,8 +46,8 @@ public class GenericServiceImpl {
 //        applicationConfig.setRegistry(registryConfig);
     }
 
-    private RegistryConfig buildRegistryConfig(Registry registry) {
-        URL fromUrl = registry.getUrl();
+    private RegistryConfig buildRegistryConfig(String registry) {
+        URL fromUrl = URL.valueOf(registry);
 
         RegistryConfig config = new RegistryConfig();
         config.setGroup(fromUrl.getParameter("group"));
@@ -68,7 +68,9 @@ public class GenericServiceImpl {
         String version = Tool.getVersion(service);
         String intf = Tool.getInterface(service);
         reference.setGeneric(true);
-        reference.setApplication(applicationConfig);
+//        reference.setApplication(applicationConfig);
+        reference.setRegistry(buildRegistryConfig("zookeeper://10.111.1.138:2188"));
+
         reference.setInterface(intf);
         reference.setVersion(version);
         reference.setGroup(group);

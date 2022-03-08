@@ -99,16 +99,16 @@ public class MockRuleServiceImpl implements MockRuleService {
 
     @Override
     public MockResult getMockData(MockContext mockContext) {
-        MockRule mockRule = new MockRule();
-        mockRule.setMethodName(mockContext.getMethodName());
-        mockRule.setServiceName(mockContext.getServiceName());
-        mockRule = mockRuleMapper.selectOne(mockRule);
+//        MockRule mockRule = new MockRule();
+//        mockRule.setMethodName(mockContext.getMethodName());
+//        mockRule.setServiceName(mockContext.getServiceName());
+//        mockRule = mockRuleMapper.selectOne(mockRule);
         MockResult mockResult = new MockResult();
-        if (Objects.isNull(mockRule)) {
-            return mockResult;
-        }
-        mockResult.setEnable(mockRule.getEnable());
-        mockResult.setContent(mockRule.getRule());
+//        if (Objects.isNull(mockRule)) {
+//            return mockResult;
+//        }
+//        mockResult.setEnable(mockRule.getEnable());
+//        mockResult.setContent(mockRule.getRule());
         return mockResult;
     }
 }
