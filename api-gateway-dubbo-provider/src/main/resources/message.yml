@@ -16,5 +16,8 @@ root:
           state: false
           context: 操作失败
         - code: GATEWAY00002
-          state: false
+          state: true
           context: 操作成功
+        - code: DUBBO001
+          state: false
+          context: 注册中心连接失败{}

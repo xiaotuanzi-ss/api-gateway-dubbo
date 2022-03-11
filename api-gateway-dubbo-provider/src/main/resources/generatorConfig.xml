@@ -32,7 +32,7 @@
             <property name="useActualColumnNames" value="fasle" />
             <columnOverride column="ORDER_ID" javaType="java.lang.String" />
         </table>
-        <table tableName="API_REGISTRY_CENTER" domainObjectName="RegistryCenterDomain" mapperName="RegistryCenterMapper">
+        <table tableName="API_REGISTRY_CENTER" domainObjectName="ApiRegistryDomain" mapperName="RegistryCenterMapper">
             <property name="useActualColumnNames" value="fasle" />
             <columnOverride column="ITEM_ID" javaType="java.lang.String" />
         </table>

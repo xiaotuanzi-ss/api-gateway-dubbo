@@ -17,8 +17,8 @@
 
 package cc.ewell.dubbo.admin.controller;
 
-import cc.ewell.dubbo.admin.dto.req.RegistryCenterReq;
-import cc.ewell.dubbo.admin.service.RegistryCenterService;
+import cc.ewell.dubbo.admin.dto.req.ApiRegistryReq;
+import cc.ewell.dubbo.admin.service.ApiRegistryService;
 import com.google.gson.Gson;
 
 import com.google.gson.JsonParseException;
@@ -56,7 +56,7 @@ public class ServiceController {
 
 
     @Autowired
-    RegistryCenterService registryCenterService;
+    ApiRegistryService apiRegistryService;
 
     private final ProviderService providerService;
     private final ConsumerService consumerService;
@@ -74,8 +74,8 @@ public class ServiceController {
                                           @RequestParam String filter,
                                           @PathVariable String env,
                                           Pageable pageable) {
-        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
-        providerService.init(registryCenterReq.getRegistryUrl());
+        ApiRegistryReq apiRegistryReq = apiRegistryService.getRegistryCenter("1");
+        providerService.init(apiRegistryReq.getRegistryUrl());
         final Set<ServiceDTO> serviceDTOS = providerService.getServiceDTOS(pattern, filter, env);
 
         final int total = serviceDTOS.size();
@@ -91,9 +91,9 @@ public class ServiceController {
 
     @RequestMapping(value = "/service/{service}", method = RequestMethod.GET)
     public ServiceDetailDTO serviceDetail(@PathVariable String service, @PathVariable String env) {
-        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
-        providerService.init(registryCenterReq.getRegistryUrl());
-        consumerService.init(registryCenterReq.getRegistryUrl());
+        ApiRegistryReq apiRegistryReq = apiRegistryService.getRegistryCenter("1");
+        providerService.init(apiRegistryReq.getRegistryUrl());
+        consumerService.init(apiRegistryReq.getRegistryUrl());
 
         service = service.replace(Constants.ANY_VALUE, Constants.PATH_SEPARATOR);
         String group = Tool.getGroup(service);
@@ -138,29 +138,29 @@ public class ServiceController {
 
     @RequestMapping(value = "/services", method = RequestMethod.GET)
     public Set<String> allServices(@PathVariable String env) {
-        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
-        providerService.init(registryCenterReq.getRegistryUrl());
+        ApiRegistryReq apiRegistryReq = apiRegistryService.getRegistryCenter("1");
+        providerService.init(apiRegistryReq.getRegistryUrl());
         return new HashSet<>(providerService.findServices());
     }
 
     @RequestMapping(value = "/applications/instance", method = RequestMethod.GET)
     public Set<String> allInstanceServices(@PathVariable String env) {
-        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
-        providerService.init(registryCenterReq.getRegistryUrl());
+        ApiRegistryReq apiRegistryReq = apiRegistryService.getRegistryCenter("1");
+        providerService.init(apiRegistryReq.getRegistryUrl());
         return new HashSet<>(providerService.findInstanceApplications());
     }
 
     @RequestMapping(value = "/applications", method = RequestMethod.GET)
     public Set<String> allApplications(@PathVariable String env) {
-        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
-        providerService.init(registryCenterReq.getRegistryUrl());
+        ApiRegistryReq apiRegistryReq = apiRegistryService.getRegistryCenter("1");
+        providerService.init(apiRegistryReq.getRegistryUrl());
         return providerService.findApplications();
     }
 
     @RequestMapping(value = "/consumers", method = RequestMethod.GET)
     public Set<String> allConsumers(@PathVariable String env) {
-        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
-        consumerService.init(registryCenterReq.getRegistryUrl());
+        ApiRegistryReq apiRegistryReq = apiRegistryService.getRegistryCenter("1");
+        consumerService.init(apiRegistryReq.getRegistryUrl());
         List<Consumer> consumers = consumerService.findAll();
         return consumers.stream().map(Consumer::getApplication).collect(Collectors.toSet());
     }

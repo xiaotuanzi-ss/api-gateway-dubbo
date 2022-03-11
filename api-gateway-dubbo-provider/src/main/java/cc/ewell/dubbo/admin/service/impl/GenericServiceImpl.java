@@ -19,13 +19,11 @@ package cc.ewell.dubbo.admin.service.impl;
 
 import cc.ewell.dubbo.admin.common.util.Constants;
 import cc.ewell.dubbo.admin.common.util.Tool;
-import cc.ewell.dubbo.admin.dto.req.RegistryCenterReq;
-import cc.ewell.dubbo.admin.service.RegistryCenterService;
+import cc.ewell.dubbo.admin.dto.req.ApiRegistryReq;
+import cc.ewell.dubbo.admin.service.ApiRegistryService;
 import org.apache.dubbo.common.URL;
-import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
-import org.apache.dubbo.registry.Registry;
 import org.apache.dubbo.rpc.service.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -50,7 +48,7 @@ public class GenericServiceImpl {
     }
 
     @Autowired
-    RegistryCenterService registryCenterService;
+    ApiRegistryService apiRegistryService;
 
     private RegistryConfig buildRegistryConfig(String registry) {
         URL fromUrl = URL.valueOf(registry);
@@ -75,8 +73,8 @@ public class GenericServiceImpl {
         String intf = Tool.getInterface(service);
         reference.setGeneric(true);
 //        reference.setApplication(applicationConfig);
-        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
-        reference.setRegistry(buildRegistryConfig(registryCenterReq.getRegistryUrl()));
+        ApiRegistryReq apiRegistryReq = apiRegistryService.getRegistryCenter("1");
+        reference.setRegistry(buildRegistryConfig(apiRegistryReq.getRegistryUrl()));
 
         reference.setInterface(intf);
         reference.setVersion(version);

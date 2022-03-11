@@ -1,19 +1,17 @@
-package cc.ewell.dubbo.admin.mapper.domain;
+package cc.ewell.dubbo.admin.dto.req;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.*;
 
-/**
- * @author xushiling
- * @description 注册中心
- * @createDate 2022/3/11 10:38 上午
- */
 @Data
 @Table(name = "API_REGISTRY_CENTER")
-public class RegistryCenterDomain {
+public class ApiRegistryReq implements Serializable {
     @Id
     @ApiModelProperty(value = "主键id")
     @Column(name = "REGISTRY_ID")
@@ -41,7 +39,7 @@ public class RegistryCenterDomain {
 
     @ApiModelProperty(value = "创建时间")
     @Column(name = "CREATE_TIME")
-    private Date createTime;
+    private String createTime;
 
     @ApiModelProperty(value = "创建用户")
     @Column(name = "CREATE_USER")
@@ -49,7 +47,7 @@ public class RegistryCenterDomain {
 
     @ApiModelProperty(value = "更新时间")
     @Column(name = "UPDATE_TIME")
-    private Date updateTime;
+    private String updateTime;
 
     @ApiModelProperty(value = "更新用户")
     @Column(name = "UPDATE_USER")

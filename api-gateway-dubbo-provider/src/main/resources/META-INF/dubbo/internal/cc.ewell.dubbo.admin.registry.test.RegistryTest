@@ -1,0 +1,4 @@
+zookeeper=cc.ewell.dubbo.admin.registry.test.impl.ZookeeperTest
+redis=cc.ewell.dubbo.admin.registry.test.impl.RedisTest
+consul=cc.ewell.dubbo.admin.registry.test.impl.ConsulTest
+nacos=cc.ewell.dubbo.admin.registry.test.impl.NacosTest

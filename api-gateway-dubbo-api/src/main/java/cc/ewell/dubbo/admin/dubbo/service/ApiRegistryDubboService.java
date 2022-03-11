@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiOperation;
  * @createDate 2021/11/22 11:07 上午
  */
 @Api(value = "注册中心服务", tags = "注册中心服务")
-public interface RegistryCenterDubboService {
+public interface ApiRegistryDubboService {
     /**
      * 插入注册中心
      *
@@ -46,7 +46,7 @@ public interface RegistryCenterDubboService {
      * @param header
      * @return
      */
-    @ApiOperation(value = "修改注册中心", notes = "注册中心")
+    @ApiOperation(value = "删除注册中心", notes = "注册中心")
     MessageResult deleteRegistryCenter(MessageHeader header);
 
 
@@ -67,7 +67,7 @@ public interface RegistryCenterDubboService {
      * @param header
      * @return
      */
-    @ApiOperation(value = "修改注册中心", notes = "注册中心")
+    @ApiOperation(value = "测试注册中心", notes = "注册中心")
     MessageResult testRegistryCenter(MessageHeader header);
 
     /**
@@ -76,7 +76,7 @@ public interface RegistryCenterDubboService {
      * @param registryAddress
      * @return
      */
-    @ApiOperation(value = "修改注册中心", notes = "注册中心")
+    @ApiOperation(value = "切换注册中心", notes = "注册中心")
     void changeRegistryCenter(String registryAddress);
 
 }

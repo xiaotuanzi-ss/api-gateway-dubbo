@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.ewell.dubbo.admin.mapper.ApiAccessMapper">
+  <resultMap id="BaseResultMap" type="cc.ewell.dubbo.admin.mapper.domain.ApiAccessDomain">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ACCESS_ID" jdbcType="DECIMAL" property="accessId" />
+    <result column="ACCESS_NAME" jdbcType="VARCHAR" property="accessName" />
+    <result column="ACCESS_TYPE" jdbcType="VARCHAR" property="accessType" />
+    <result column="REGISTRY_ID" jdbcType="DECIMAL" property="registryId" />
+    <result column="REGISTRY_URL" jdbcType="VARCHAR" property="registryUrl" />
+    <result column="ACCESS_URL" jdbcType="VARCHAR" property="accessUrl" />
+    <result column="SERVICE_LEVEL" jdbcType="VARCHAR" property="serviceLevel" />
+    <result column="VENDOR_LABEL" jdbcType="VARCHAR" property="vendorLabel" />
+    <result column="APPLICATION_NAME" jdbcType="VARCHAR" property="applicationName" />
+    <result column="DUBBO_SERVICE" jdbcType="VARCHAR" property="dubboService" />
+    <result column="SERVICE_GROUP" jdbcType="VARCHAR" property="serviceGroup" />
+    <result column="SERVICE_VERSION" jdbcType="VARCHAR" property="serviceVersion" />
+    <result column="UPDATE_MODE" jdbcType="VARCHAR" property="updateMode" />
+    <result column="DESCRIBE" jdbcType="VARCHAR" property="describe" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+</mapper>
