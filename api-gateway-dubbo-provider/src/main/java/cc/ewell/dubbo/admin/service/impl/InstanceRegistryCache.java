@@ -52,4 +52,8 @@ public class InstanceRegistryCache implements RegistryCache<String, ConcurrentMa
                                                                                         Function<? super String, ? extends ConcurrentMap<String, Map<String, List<InstanceAddressURL>>>> mappingFunction) {
         return registryCache.computeIfAbsent(key, mappingFunction);
     }
+
+    public void removeRegistryCache() {
+        registryCache.clear();
+    }
 }

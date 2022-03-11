@@ -17,6 +17,8 @@
 
 package cc.ewell.dubbo.admin.controller;
 
+import cc.ewell.dubbo.admin.dto.req.RegistryCenterReq;
+import cc.ewell.dubbo.admin.service.RegistryCenterService;
 import com.google.gson.Gson;
 
 import com.google.gson.JsonParseException;
@@ -47,10 +49,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Authority(needLogin = true)
+@Authority(needLogin = false)
 @RestController
 @RequestMapping("/api/{env}")
 public class ServiceController {
+
+
+    @Autowired
+    RegistryCenterService registryCenterService;
 
     private final ProviderService providerService;
     private final ConsumerService consumerService;
@@ -68,6 +74,8 @@ public class ServiceController {
                                           @RequestParam String filter,
                                           @PathVariable String env,
                                           Pageable pageable) {
+        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
+        providerService.init(registryCenterReq.getRegistryUrl());
         final Set<ServiceDTO> serviceDTOS = providerService.getServiceDTOS(pattern, filter, env);
 
         final int total = serviceDTOS.size();
@@ -83,6 +91,10 @@ public class ServiceController {
 
     @RequestMapping(value = "/service/{service}", method = RequestMethod.GET)
     public ServiceDetailDTO serviceDetail(@PathVariable String service, @PathVariable String env) {
+        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
+        providerService.init(registryCenterReq.getRegistryUrl());
+        consumerService.init(registryCenterReq.getRegistryUrl());
+
         service = service.replace(Constants.ANY_VALUE, Constants.PATH_SEPARATOR);
         String group = Tool.getGroup(service);
         String version = Tool.getVersion(service);
@@ -107,7 +119,7 @@ public class ServiceController {
                 String release = providerService.findVersionInApplication(application);
                 // serialization compatible 2.x version
                 if (release.startsWith("2")) {
-                    cc.ewell.dubbo.admin.model.domain.FullServiceDefinition serviceDefinition = gson.fromJson(metadata, cc.ewell.dubbo.admin.model.domain.FullServiceDefinition.class);
+                    FullServiceDefinition serviceDefinition = gson.fromJson(metadata, FullServiceDefinition.class);
                     serviceDetailDTO.setMetadata(serviceDefinition);
                 } else {
                     FullServiceDefinition serviceDefinition = gson.fromJson(metadata, FullServiceDefinition.class);
@@ -126,21 +138,29 @@ public class ServiceController {
 
     @RequestMapping(value = "/services", method = RequestMethod.GET)
     public Set<String> allServices(@PathVariable String env) {
+        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
+        providerService.init(registryCenterReq.getRegistryUrl());
         return new HashSet<>(providerService.findServices());
     }
 
     @RequestMapping(value = "/applications/instance", method = RequestMethod.GET)
     public Set<String> allInstanceServices(@PathVariable String env) {
+        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
+        providerService.init(registryCenterReq.getRegistryUrl());
         return new HashSet<>(providerService.findInstanceApplications());
     }
 
     @RequestMapping(value = "/applications", method = RequestMethod.GET)
     public Set<String> allApplications(@PathVariable String env) {
+        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
+        providerService.init(registryCenterReq.getRegistryUrl());
         return providerService.findApplications();
     }
 
     @RequestMapping(value = "/consumers", method = RequestMethod.GET)
     public Set<String> allConsumers(@PathVariable String env) {
+        RegistryCenterReq registryCenterReq = registryCenterService.getRegistryCenter("1");
+        consumerService.init(registryCenterReq.getRegistryUrl());
         List<Consumer> consumers = consumerService.findAll();
         return consumers.stream().map(Consumer::getApplication).collect(Collectors.toSet());
     }

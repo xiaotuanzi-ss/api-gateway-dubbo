@@ -17,8 +17,6 @@
 
 package cc.ewell.dubbo.admin.registry.mapping;
 
-import cc.ewell.dubbo.admin.registry.mapping.AddressChangeListener;
-import cc.ewell.dubbo.admin.registry.mapping.AdminServiceInstancesChangedListener;
 import cc.ewell.dubbo.admin.common.util.Constants;
 import cc.ewell.dubbo.admin.service.impl.InstanceRegistryCache;
 import org.apache.dubbo.common.URL;

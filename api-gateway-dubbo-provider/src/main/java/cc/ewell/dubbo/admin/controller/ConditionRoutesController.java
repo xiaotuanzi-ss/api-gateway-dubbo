@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-@Authority(needLogin = true)
+@Authority(needLogin = false)
 @RestController
 @RequestMapping("/api/{env}/rules/route/condition")
 public class ConditionRoutesController {

@@ -17,7 +17,6 @@
 
 package cc.ewell.dubbo.admin.service.impl;
 
-import cc.ewell.dubbo.admin.service.impl.InstanceRegistryCache;
 import cc.ewell.dubbo.admin.common.util.Constants;
 import cc.ewell.dubbo.admin.model.domain.Provider;
 import cc.ewell.dubbo.admin.model.domain.RegistrySource;

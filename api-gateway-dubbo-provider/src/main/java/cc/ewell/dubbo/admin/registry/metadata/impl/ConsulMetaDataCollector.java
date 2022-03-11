@@ -78,7 +78,7 @@ public class ConsulMetaDataCollector implements MetaDataCollector {
     }
 
     //just for test
-    ConsulClient getClient() {
+    public ConsulClient getClient() {
         return this.client;
     }
 }

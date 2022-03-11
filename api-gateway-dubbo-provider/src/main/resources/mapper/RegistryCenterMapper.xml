@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.ewell.dubbo.admin.mapper.RegistryCenterMapper">
+  <resultMap id="BaseResultMap" type="cc.ewell.dubbo.admin.mapper.domain.RegistryCenterDomain">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="REGISTRY_ID" jdbcType="DECIMAL" property="registryId" />
+    <result column="REGISTRY_NAME" jdbcType="VARCHAR" property="registryName" />
+    <result column="REGISTRY_TYPE" jdbcType="VARCHAR" property="registryType" />
+    <result column="REGISTRY_URL" jdbcType="VARCHAR" property="registryUrl" />
+    <result column="VENDOR_LABEL" jdbcType="VARCHAR" property="vendorLabel" />
+    <result column="DESCRIBE" jdbcType="VARCHAR" property="describe" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+  </resultMap>
+</mapper>

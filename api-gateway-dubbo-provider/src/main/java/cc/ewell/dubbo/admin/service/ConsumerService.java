@@ -26,6 +26,7 @@ import java.util.List;
  *
  */
 public interface ConsumerService {
+    void init(String registryUrl);
 
     List<Consumer> findByService(String serviceName);
 

@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Mock Rule Controller.
  */
-@Authority(needLogin = true)
+@Authority(needLogin = false)
 @RestController
 @RequestMapping("/api/{env}/mock/rule")
 public class MockRuleController {

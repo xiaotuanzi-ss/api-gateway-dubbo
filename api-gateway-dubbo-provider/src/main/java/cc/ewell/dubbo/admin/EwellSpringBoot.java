@@ -4,14 +4,8 @@ import co.faao.plugin.starter.actuator.actuatorsecurity.annotation.EwellActuator
 import co.faao.plugin.starter.apollo.config.ConfigApType;
 import co.faao.plugin.starter.flyway.annotation.EwellFlyway;
 import co.faao.plugin.starter.jaeger.annotation.EwellJaeger;
-import org.apache.dubbo.config.ApplicationConfig;
-import org.apache.dubbo.config.ReferenceConfig;
-import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
-import org.apache.dubbo.mock.api.MockResult;
-import org.apache.dubbo.mock.api.MockService;
-import org.apache.dubbo.rpc.service.GenericService;
-import org.mybatis.spring.annotation.MapperScan;
+import tk.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 
 import co.faao.plugin.EwellStarter;
@@ -40,7 +34,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 @SpringBootApplication(exclude={
 		HibernateJpaAutoConfiguration.class
 })
-@EnableDubbo(scanBasePackages = {"cc.ewell.dubbo.admin.provider"})
+@EnableDubbo(scanBasePackages = {"cc.ewell.dubbo.admin"})
 @MapperScan(basePackages = {"cc.ewell.dubbo.admin.mapper"})
 public class EwellSpringBoot {
 	public static void main(String[] args) {

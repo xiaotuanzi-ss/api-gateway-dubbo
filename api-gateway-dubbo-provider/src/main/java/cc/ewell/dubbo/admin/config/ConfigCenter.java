@@ -48,6 +48,12 @@ import java.util.Arrays;
 import static org.apache.dubbo.common.constants.CommonConstants.CLUSTER_KEY;
 import static org.apache.dubbo.registry.client.ServiceDiscoveryFactory.getExtension;
 
+
+/**
+ * @author xushiling
+ * @description 默认注册中心
+ * @createDate 2022/3/11 10:36 上午
+ */
 @Configuration
 public class ConfigCenter {
 
@@ -98,7 +104,7 @@ public class ConfigCenter {
      * generate dynamic configuration client
      */
     @Bean("governanceConfiguration")
-    GovernanceConfiguration getDynamicConfiguration() {
+    public GovernanceConfiguration getDynamicConfiguration() {
         GovernanceConfiguration dynamicConfiguration = null;
 
         if (StringUtils.isNotEmpty(configCenter)) {
@@ -139,7 +145,7 @@ public class ConfigCenter {
      */
     @Bean("dubboRegistry")
     @DependsOn("governanceConfiguration")
-    Registry getRegistry() {
+    public Registry getRegistry() {
         Registry registry = null;
         if (registryUrl == null) {
             if (StringUtils.isBlank(registryAddress)) {
@@ -157,7 +163,7 @@ public class ConfigCenter {
      */
     @Bean("metaDataCollector")
     @DependsOn("governanceConfiguration")
-    MetaDataCollector getMetadataCollector() {
+    public MetaDataCollector getMetadataCollector() {
         MetaDataCollector metaDataCollector = new NoOpMetadataCollector();
         if (metadataUrl == null) {
             if (StringUtils.isNotEmpty(metadataAddress)) {

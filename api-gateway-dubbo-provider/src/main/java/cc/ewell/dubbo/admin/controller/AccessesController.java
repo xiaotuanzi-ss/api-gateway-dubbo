@@ -43,7 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Authority(needLogin = true)
+@Authority(needLogin = false)
 @RestController
 @RequestMapping("/api/{env}/rules/access")
 public class AccessesController {

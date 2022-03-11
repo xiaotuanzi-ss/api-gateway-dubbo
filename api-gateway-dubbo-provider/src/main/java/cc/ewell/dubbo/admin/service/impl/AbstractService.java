@@ -16,7 +16,7 @@
  */
 package cc.ewell.dubbo.admin.service.impl;
 
-import cc.ewell.dubbo.admin.service.impl.InterfaceRegistryCache;
+import cc.ewell.dubbo.admin.config.DynamicConfigCenter;
 import cc.ewell.dubbo.admin.registry.config.GovernanceConfiguration;
 import cc.ewell.dubbo.admin.registry.metadata.MetaDataCollector;
 import org.apache.dubbo.common.URL;
@@ -32,13 +32,13 @@ public class AbstractService {
 
     protected static final Logger logger = LoggerFactory.getLogger(AbstractService.class);
 
-    @Autowired
+//    @Autowired
     protected Registry registry;
 
-    @Autowired
+//    @Autowired
     protected GovernanceConfiguration dynamicConfiguration;
 
-    @Autowired
+//    @Autowired
     protected MetaDataCollector metaDataCollector;
 
     @Autowired
@@ -46,6 +46,13 @@ public class AbstractService {
 
     public ConcurrentMap<String, ConcurrentMap<String, Map<String, URL>>> getInterfaceRegistryCache() {
         return interfaceRegistryCache.getRegistryCache();
+    }
+
+    public void init(String registryAddress) {
+        DynamicConfigCenter dynamicConfigCenter = new DynamicConfigCenter(registryAddress);
+        registry = dynamicConfigCenter.getRegistry();
+        dynamicConfiguration = dynamicConfigCenter.getDynamicConfiguration();
+        metaDataCollector = dynamicConfigCenter.getMetadataCollector();
     }
 
 }

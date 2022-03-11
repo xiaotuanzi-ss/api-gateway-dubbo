@@ -22,6 +22,8 @@ import org.apache.dubbo.common.URL;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -32,6 +34,19 @@ import java.util.concurrent.ConcurrentMap;
  */
 @Component
 public class InterfaceRegistryCache implements RegistryCache<String, ConcurrentMap<String, Map<String, URL>>> {
+//    private static ConcurrentMap<String, InterfaceRegistryCache> urlMap = new ConcurrentHashMap<>();
+//
+//    //让构造函数为 private，这样该类就不会被实例化
+//    private InterfaceRegistryCache() {
+//    }
+//
+//    //获取唯一可用的对象
+//    public static InterfaceRegistryCache getInstance(String url) {
+//        if (urlMap.get(url) == null) {
+//            urlMap.put(url, new InterfaceRegistryCache());
+//        }
+//        return urlMap.get(url);
+//    }
 
     private final ConcurrentMap<String, ConcurrentMap<String, Map<String, URL>>> registryCache = new ConcurrentHashMap<>();
 
@@ -47,5 +62,10 @@ public class InterfaceRegistryCache implements RegistryCache<String, ConcurrentM
 
     public ConcurrentMap<String, ConcurrentMap<String, Map<String, URL>>> getRegistryCache() {
         return registryCache;
+    }
+
+
+    public void removeRegistryCache() {
+        registryCache.clear();
     }
 }

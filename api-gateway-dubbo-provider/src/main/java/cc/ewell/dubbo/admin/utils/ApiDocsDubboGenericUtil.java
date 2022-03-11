@@ -122,7 +122,7 @@ public class ApiDocsDubboGenericUtil {
             referenceConfig.setVersion(version);
             referenceConfig.setGroup(group);
 
-            referenceConfig.setApplication(application);
+//            referenceConfig.setApplication(application);
             if (address.startsWith("dubbo")) {
                 referenceConfig.setUrl(address);
             } else {

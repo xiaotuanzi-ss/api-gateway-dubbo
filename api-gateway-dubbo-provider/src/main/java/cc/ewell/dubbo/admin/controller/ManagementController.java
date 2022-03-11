@@ -38,7 +38,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
-@Authority(needLogin = true)
+@Authority(needLogin = false)
 @RestController
 @RequestMapping("/api/{env}/manage")
 public class ManagementController {

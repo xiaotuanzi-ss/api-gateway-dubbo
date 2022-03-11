@@ -15,3 +15,6 @@ root:
         - code: SYSEX0136
           state: false
           context: 操作失败
+        - code: GATEWAY00002
+          state: false
+          context: 操作成功

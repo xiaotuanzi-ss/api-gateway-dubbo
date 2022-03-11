@@ -28,6 +28,8 @@ import java.util.Set;
  */
 public interface ProviderService {
 
+    void init(String registryUrl);
+
     void create(Provider provider);
 
     String getProviderMetaData(MetadataIdentifier providerIdentifier);

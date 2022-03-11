@@ -17,7 +17,6 @@
 
 package cc.ewell.dubbo.admin.service.impl;
 
-import cc.ewell.dubbo.admin.service.impl.AbstractService;
 import cc.ewell.dubbo.admin.common.util.Constants;
 import cc.ewell.dubbo.admin.model.dto.ConfigDTO;
 import cc.ewell.dubbo.admin.service.ManagementService;

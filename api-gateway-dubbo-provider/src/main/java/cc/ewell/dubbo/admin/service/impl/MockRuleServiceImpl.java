@@ -22,7 +22,6 @@ import cc.ewell.dubbo.admin.model.domain.MockRule;
 import cc.ewell.dubbo.admin.model.dto.MockRuleDTO;
 import cc.ewell.dubbo.admin.service.MockRuleService;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.dubbo.mock.api.MockContext;
 import org.apache.dubbo.mock.api.MockResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
